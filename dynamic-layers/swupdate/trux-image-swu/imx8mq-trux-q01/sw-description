@@ -2,7 +2,7 @@ software =
 {
 	version = "0.1.0";
 
-	imx8mq-trucurx = {
+	imx8mq-trux-q01 = {
 		hardware-compatibility: [ "1.0" ];
 
 		files: (

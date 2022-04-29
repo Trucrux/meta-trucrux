@@ -394,7 +394,7 @@ function copy_scripts
 	echo "Copying scripts"
 
 	cp ${YOCTO_SCRIPTS_PATH}/echos.sh 		${P2_MOUNT_DIR}/usr/bin/
-	cp ${YOCTO_SCRIPTS_PATH}/mx8_install_trux.sh	${P2_MOUNT_DIR}/usr/bin/install_trux.sh
+	cp ${YOCTO_SCRIPTS_PATH}/mx8_install_yocto.sh	${P2_MOUNT_DIR}/usr/bin/install_yocto.sh
 
 	if [ ${HAS_DESKTOP_ICONS} = 1 ]; then
 		echo
