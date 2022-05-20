@@ -20,6 +20,7 @@ FILES_${PN} = " \
 "
 
 RDEPENDS_${PN}_imx8mq-trux-q01 = "i2c-tools"
+RDEPENDS_${PN}_imx8mm-trux-q01 = "i2c-tools"
 RDEPENDS_${PN}_append = " bash base-files"
 
 S = "${WORKDIR}"
@@ -37,9 +38,9 @@ do_install() {
 		install -m 0644 ${WORKDIR}/trucrux-wifi.service ${D}/${systemd_unitdir}/system
 		install -m 0644 ${WORKDIR}/trucrux-bt.service ${D}/${systemd_unitdir}/system
  
-		ln -sf ${systemd_unitdir}/system/variscite-wifi.service \
+		ln -sf ${systemd_unitdir}/system/trucrux-wifi.service \
 			${D}${sysconfdir}/systemd/system/multi-user.target.wants/trucrux-wifi.service
-		ln -sf ${systemd_unitdir}/system/variscite-bt.service \
+		ln -sf ${systemd_unitdir}/system/trucrux-bt.service \
 			${D}${sysconfdir}/systemd/system/multi-user.target.wants/trucrux-bt.service
 	else
 		install -d ${D}${sysconfdir}/init.d
@@ -51,4 +52,4 @@ do_install() {
 	fi
 }
 
-COMPATIBLE_MACHINE = "(imx8mq-trux-q01)"
+COMPATIBLE_MACHINE = "(imx8mq-trux-q01|imx8mm-trux-q01)"

@@ -14,7 +14,6 @@ BOOTDIR=/boot
 
 check_board()
 {
-
 	if grep -q "i.MX8MQ" /sys/devices/soc0/soc_id; then
 		BOARD=imx8mq-trux-q01
 		DTB_PREFIX=imx8mq-trux-q01
@@ -25,6 +24,11 @@ check_board()
 			red_bold_echo "ERROR: invalid display, should be lvds, hdmi, dp, lvds-dp or lvds-hdmi"
 			exit 1
 		fi
+        elif grep -q "i.MX8MM" /sys/devices/soc0/soc_id; then
+                BOARD=imx8mm-trux-q01
+                DTB_PREFIX=imx8mm-trux-q01
+                BLOCK=mmcblk2
+                BOOTLOADER_OFFSET=33
 	else
 		red_bold_echo "ERROR: Unsupported board"
 		exit 1
