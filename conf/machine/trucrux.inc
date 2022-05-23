@@ -11,6 +11,7 @@ KERNEL_IMAGETYPE_mx8 = "Image.gz"
 SOC_DEFAULT_WKS_FILE_mx8 = "imx-imx-boot-bootpart1.wks.in"
 
 DEFAULTTUNE_mx8mq  ?= "cortexa53-crypto"
+DEFAULTTUNE_mx8mm  ?= "cortexa53-crypto"
 
 # Trucrux BSP default providers
 PREFERRED_PROVIDER_u-boot = "u-boot-trucrux"

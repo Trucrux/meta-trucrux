@@ -6,11 +6,13 @@ SRC_URI_append = " \
         file://02-wifi.sh \
 "
 
+SRC_URI_append_imx8mm-trux-q01 = " \
+	file://03-eth.sh \
+"
+
 FILES_${PN} += "${sysconfdir}/pm/sleep.d/*"
 
-do_install_append() {
-	install -d ${D}/${sysconfdir}/pm/sleep.d
-	install -m 0755 ${WORKDIR}/01-bt.sh ${D}/${sysconfdir}/pm/sleep.d
-	install -m 0755 ${WORKDIR}/02-wifi.sh ${D}/${sysconfdir}/pm/sleep.d
+do_install_append_imx8mm-trux-q01() {
+        install -d ${D}/${sysconfdir}/pm/sleep.d
+        install -m 0755 ${WORKDIR}/03-eth.sh ${D}/${sysconfdir}/pm/sleep.d
 }
-

@@ -1,15 +1,13 @@
 #!/bin/sh
 
-. /etc/bluetooth/trucrux-bt.conf
-. /etc/bluetooth/trucrux-bt-common.sh
+[ -x /etc/bluetooth/trucrux-bt ] || exit 0
 
 case $1 in
 
 "suspend")
-        bt_stop
+        /etc/bluetooth/trucrux-bt stop
         ;;
 "resume")
-        bt_start
+        /etc/bluetooth/trucrux-bt start
         ;;
 esac
-

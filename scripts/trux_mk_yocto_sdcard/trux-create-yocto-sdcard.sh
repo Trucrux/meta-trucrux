@@ -98,7 +98,7 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 help() {
 	bn=`basename $0`
-	echo " Usage: MACHINE=<imx8mq-trux-q01> $bn <options> device_node"
+	echo " Usage: MACHINE=<imx8mq-trux-q01|imx8mm-trux-q01> $bn <options> device_node"
 	echo
 	echo " options:"
 	echo " -h		display this Help message"
@@ -118,6 +118,9 @@ fi
 case $MACHINE in
 	"imx8mq-trux-q01")
 		IMXBOOT_TARGET=flash_evk
+		;;
+	"imx8mm-trux-q01")
+		IMXBOOT_TARGET=flash_lpddr4_ddr4_evk
 		;;
 	*)
 		help

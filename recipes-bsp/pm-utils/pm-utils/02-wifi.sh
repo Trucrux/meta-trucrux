@@ -1,20 +1,14 @@
 #!/bin/sh
 
-. /etc/wifi/trucrux-wifi.conf
-. /etc/wifi/trucrux-wifi-common.sh
-
-# Exit if WIFI is not available
-if wifi_should_not_be_stopped; then
-        exit 0
-fi
+[ -x /etc/wifi/trucrux-wifi ] || exit 0
 
 case $1 in
 
 "suspend")
-        wifi_down
+        /etc/wifi/trucrux-wifi stop
         ;;
 "resume")
-        wifi_up
+        /etc/wifi/trucrux-wifi start
         if [ -f /etc/init.d/connman ]; then
                 killall -9 wpa_supplicant
                 /etc/init.d/connman restart
