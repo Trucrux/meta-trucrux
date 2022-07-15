@@ -7,7 +7,7 @@ UBOOT_IMAGE=imx-boot-sd.bin
 UBOOT_IMAGE_MX8MQ_DP=imx-boot-imx8mq-trux-q01-sd.bin-flash_dp_evk
 ROOTFS_IMAGE=rootfs.tar.gz
 BOOTLOADER_RESERVED_SIZE=8
-DISPLAY=lvds
+DISPLAY=hdmi
 PART=p
 ROOTFSPART=1
 BOOTDIR=/boot
@@ -16,7 +16,7 @@ check_board()
 {
 	if grep -q "i.MX8MQ" /sys/devices/soc0/soc_id; then
 		BOARD=imx8mq-trux-q01
-		DTB_PREFIX=imx8mq-trux-q01
+		DTB_PREFIX=imx8mq-trux-8MDVP
 		BLOCK=mmcblk0
 		BOOTLOADER_OFFSET=33
 		if [[ $DISPLAY != "lvds" && $DISPLAY != "hdmi" && \
@@ -166,14 +166,13 @@ install_rootfs_to_emmc()
 	printf "Extracting files"
 	tar --warning=no-timestamp -xpf ${IMGS_PATH}/${ROOTFS_IMAGE} -C ${MOUNTDIR} --checkpoint=.1200
 
-#	if [[ ${BOARD} = "imx8mq-trux-q01" ]]; then
-#		# Create DTB symlinks
-#		(cd ${MOUNTDIR}/${BOOTDIR}; ln -fs ${DTB_PREFIX}-wifi-${DISPLAY}.dtb ${DTB_PREFIX}.dtb)
-#		(cd ${MOUNTDIR}/${BOOTDIR}; ln -fs ${DTB_PREFIX}-legacy-wifi-${DISPLAY}.dtb ${DTB_PREFI#X}-legacy.dtb)
+	if [[ ${BOARD} = "imx8mq-trux-q01" ]]; then
+		# Create DTB symlinks
+		(cd ${MOUNTDIR}/${BOOTDIR}; ln -fs ${DTB_PREFIX}-wifi-${DISPLAY}.dtb ${DTB_PREFIX}.dtb)
 
 		# Update trucrux-blacklist.conf
 		echo "blacklist fec" >> ${MOUNTDIR}/etc/modprobe.d/trucrux-blacklist.conf
-#	fi
+	fi
 
 	# Adjust u-boot-fw-utils for eMMC on the installed rootfs
 	if [ -f ${MOUNTDIR}/etc/fw_env.config ]; then
