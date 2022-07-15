@@ -14,7 +14,7 @@ BT_BUF_GPIO=133
 BT_TTY_DEV=/dev/ttymxc3
 
 # Sterling LWB5 BT firmware
-BT_FIRMWARE=/lib/firmware/brcm/BCM4335C0.hcd
+BT_FIRMWARE=/lib/firmware/bcmdhd/BCM4362A2_001.003.006.1012.1017.hcd
 
 # WIFI SDIO ID file
 WIFI_SDIO_ID_FILE=/sys/class/net/wlan0/device/device

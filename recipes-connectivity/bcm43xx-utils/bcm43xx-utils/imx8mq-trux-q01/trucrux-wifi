@@ -102,7 +102,7 @@ wifi_up()
 	wifi_mmc_bind
 	
 	# Load WIFI driver
-	modprobe brcmfmac
+	modprobe bcmdhd
 
 	# Load Ethernet driver
 	modprobe fec
@@ -112,7 +112,7 @@ wifi_up()
 wifi_down()
 {
 	# Unload WIFI driver
-	modprobe -r brcmfmac
+	modprobe -r bcmdhd
 
 	# Unload Ethernet driver
 	modprobe -r fec
@@ -228,7 +228,7 @@ wifi_start()
 wifi_stop()
 {
 	# Exit if WIFI should not be stopped
-	wifi_should_not_be_stopped && exit 0
+	wifi_should_not_be_stopped
 
 	# Down WIFI
 	wifi_down
