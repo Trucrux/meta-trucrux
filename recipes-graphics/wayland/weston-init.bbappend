@@ -1,12 +1,30 @@
+#
+# Modified Startup script and systemd unit file for the Weston Wayland compositor
+#
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-RDEPENDS_${PN}_append = " adwaita-icon-theme adwaita-icon-theme-cursors"
+SRC_URI += " file://trux-weston@.service \
+             file://setup-weston-init.sh"
 
-# [Shell] is already uncommented by default in Trucrux's weston.ini
-INI_UNCOMMENT_ASSIGNMENTS_remove_mx8mq = " \
-    \\[shell\\] \
+S = "${WORKDIR}"
+
+do_install_append() {
+	# Overwrite modified Weston systemd service
+	install -D -p -m0644 ${WORKDIR}/trux-weston@.service ${D}${systemd_system_unitdir}/weston@.service
+	sed -i -e s:/etc:${sysconfdir}:g \
+		-e s:/usr/bin:${bindir}:g \
+		-e s:/var:${localstatedir}:g \
+		${D}${systemd_unitdir}/system/weston@.service
+	install -D -p -m0755 ${WORKDIR}/setup-weston-init.sh ${D}${bindir}
+}
+
+INI_SHELL_SECT = "\\[shell\\]"
+INI_SHELL_SECT_mx8mq = ""
+
+INI_UNCOMMENT_ASSIGNMENTS_append_rescue = " \
+	${INI_SHELL_SECT} \
+	panel-position \
+	background-color \
 "
 
-INI_UNCOMMENT_ASSIGNMENTS_append_mx6 = " \
-    use-g2d=1 \
-"
+FILES_${PN} += "${bindir}/setup-weston-init.sh"
