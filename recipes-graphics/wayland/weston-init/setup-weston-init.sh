@@ -29,7 +29,7 @@ do
         echo "name=${IFNAME#*-}" >> /etc/xdg/weston/weston.ini
         echo "mode=${RESOL}@60" >> /etc/xdg/weston/weston.ini
         if [ $HEIGHT -gt $WIDTH ]; then
-          echo "transform=90" >> /etc/xdg/weston/weston.ini
+          echo "transform=270" >> /etc/xdg/weston/weston.ini
         fi
         sync
     fi
