@@ -20,7 +20,7 @@ if [[ -e ${YOCTO_ROOT}/sources/meta-boot2qt ]] ; then
 else
 	readonly BSP_TYPE="YOCTO"
 	readonly YOCTO_BUILD=${YOCTO_ROOT}/build_xwayland
-	readonly YOCTO_DEFAULT_IMAGE=fsl-image-gui
+		 YOCTO_DEFAULT_IMAGE=fsl-image-gui
 
 fi
 echo "BSP type: ${BSP_TYPE}"
@@ -147,6 +147,10 @@ while [ "$moreoptions" = 1 -a $# -gt 0 ]; do
 			YOCTO_RECOVERY_ROOTFS_MASK_PATH=`readlink -e "${1}.tar.gz"`;
 			YOCTO_RECOVERY_ROOTFS_PATH=`dirname ${YOCTO_RECOVERY_ROOTFS_MASK_PATH}`
 			YOCTO_RECOVERY_ROOTFS_BASE_IN_NAME=`basename ${1}`
+			if [[ $YOCTO_RECOVERY_ROOTFS_BASE_IN_NAME == fsl-image-qt5-imx8mq-trux-q01 ]]; then
+				YOCTO_DEFAULT_IMAGE=fsl-image-qt5
+			fi
+
 	    ;;
 	    -n) shift;
 			RELEASE_NOTES_FILE=${1}
