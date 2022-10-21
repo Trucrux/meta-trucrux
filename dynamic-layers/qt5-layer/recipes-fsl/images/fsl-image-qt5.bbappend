@@ -10,3 +10,5 @@ IMAGE_INSTALL += " \
 	qtvirtualkeyboard-qmlplugins \
 	qtdeclarative-tools \
 "
+
+IMAGE_INSTALL_append = " qttools qttools-dev qttools-tools packagegroup-qt5-toolchain-target qtbase-dev qtbase-mkspecs qtbase-tools "
