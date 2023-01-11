@@ -6,7 +6,7 @@ DEPENDS += "bison-native"
 
 UBOOT_SRC ?= "git://github.com/Trucrux/uboot-trucrux.git;protocol=https"
 SRCBRANCH = "v2020.04_5.4.24_2.1.0_dunfell"
-SRCREV = "34025156558cc961557eb3d2db2405b18b0b0e6d"
+SRCREV = "6decfafd44a7c117a8080b359cfb09cdee326399"
 
 
 UBOOT_INITIAL_ENV_DEVICE = "sd"
