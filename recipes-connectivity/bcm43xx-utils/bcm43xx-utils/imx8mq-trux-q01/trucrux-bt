@@ -72,13 +72,7 @@ bt_start()
 
 	# Start BT firmware loading service
 	kill -9 $(pidof brcm_patchram_plus) 2>/dev/null || true
-	brcm_patchram_plus \
-			--patchram ${BT_FIRMWARE} \
-			--enable_hci \
-			--no2bytes \
-			--baudrate 3000000 \
-			--scopcm=1,0,0,0,0,0,0,0,0,0 \
-			--tosleep 1000 ${BT_TTY_DEV} &
+	brcm_patchram_plus -d --enable_hci --no2bytes --tosleep 200000 --baudrate 3000000 --patchram /lib/firmware/bcmdhd/BCM4362A2_001.003.006.1012.1017.hcd /dev/ttymxc3 &
 }
 
 # Stop BT hardware
