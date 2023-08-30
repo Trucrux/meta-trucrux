@@ -1,14 +1,14 @@
 #
 # Modified Startup script and systemd unit file for the Weston Wayland compositor
 #
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " file://trux-weston@.service \
              file://setup-weston-init.sh"
 
 S = "${WORKDIR}"
 
-do_install_append() {
+do_install:append() {
 	# Overwrite modified Weston systemd service
 	install -D -p -m0644 ${WORKDIR}/trux-weston@.service ${D}${systemd_system_unitdir}/weston@.service
 	sed -i -e s:/etc:${sysconfdir}:g \
@@ -21,7 +21,7 @@ do_install_append() {
 INI_SHELL_SECT = "\\[shell\\]"
 INI_SHELL_SECT_mx8mq = ""
 
-INI_UNCOMMENT_ASSIGNMENTS_append_rescue = " \
+INI_UNCOMMENT_ASSIGNMENTS:append_rescue = " \
 	${INI_SHELL_SECT} \
 	panel-position \
 	background-color \

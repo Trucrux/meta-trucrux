@@ -24,7 +24,7 @@ QT5_IMAGE_INSTALL = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland qtwayland-plugins', '', d)} \
 "
 
-QT5_IMAGE_INSTALL_append_imxgpu3d = " \
+QT5_IMAGE_INSTALL:append_imxgpu3d = " \
     packagegroup-qt5-3d \
 "
 
@@ -44,4 +44,4 @@ IMAGE_INSTALL += " \
 
 # Due to the Qt samples the resulting image will not fit the default NAND size.
 # Removing default ubi creation for this image
-IMAGE_FSTYPES_remove = "multiubi"
+IMAGE_FSTYPES:remove = "multiubi"

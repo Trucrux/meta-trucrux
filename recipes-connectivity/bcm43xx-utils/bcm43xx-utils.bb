@@ -1,9 +1,10 @@
 DESCRIPTION = "Startup and config files for use with BCM43XX WIFI and Bluetooth"
 
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
 
 DEPENDS += "${@bb.utils.contains('DISTRO_FEATURES','systemd','','update-rc.d-native',d)}"
+RDEPENDS:${PN} += "bash"
 
 SRC_URI = " \
 	file://trucrux-wifi \
@@ -12,16 +13,16 @@ SRC_URI = " \
 	file://trucrux-bt.service \
 "
 
-FILES_${PN} = " \ 
+FILES:${PN} = " \ 
 	${sysconfdir}/wifi/*  \
 	${sysconfdir}/bluetooth/*  \
 	${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${systemd_unitdir}/system/* ${sysconfdir}/systemd/system/multi-user.target.wants/*', \
 			'${sysconfdir}/init.d ${sysconfdir}/rcS.d ${sysconfdir}/rc2.d ${sysconfdir}/rc3.d ${sysconfdir}/rc4.d ${sysconfdir}/rc5.d', d)} \
 "
 
-RDEPENDS_${PN}_imx8mq-trux-q01 = "i2c-tools"
-RDEPENDS_${PN}_imx8mm-trux-q01 = "i2c-tools"
-RDEPENDS_${PN}_append = " bash base-files"
+RDEPENDS_${PN}:imx8mq-trux-q01 = "i2c-tools"
+RDEPENDS_${PN}:imx8mm-trux-q01 = "i2c-tools"
+RDEPENDS_${PN}:append = " bash base-files"
 
 S = "${WORKDIR}"
 

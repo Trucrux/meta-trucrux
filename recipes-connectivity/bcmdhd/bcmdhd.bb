@@ -26,4 +26,4 @@ do_install() {
     cp -r ${WORKDIR}/ReadMe.txt ${D}${base_libdir}/firmware/bcmdhd
 }
 
-FILES_${PN} += "${base_libdir}/firmware/bcmdhd"
+FILES:${PN} += "${base_libdir}/firmware/bcmdhd"

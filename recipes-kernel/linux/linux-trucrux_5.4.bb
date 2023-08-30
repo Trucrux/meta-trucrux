@@ -20,30 +20,30 @@ RDEPENDS_${KERNEL_PACKAGE_NAME}-base = ""
 
 DEFAULT_PREFERENCE = "1"
 
-LOCALVERSION_imx8mq-trux-q01 = "-imx8mq"
-LOCALVERSION_imx8mm-trux-q01 = "-imx8mm"
+LOCALVERSION:imx8mq-trux-q01 = "-imx8mq"
+LOCALVERSION:imx8mm-trux-q01 = "-imx8mm"
 
-KBUILD_DEFCONFIG_imx8mq-trux-q01 = "imx8mq_trucrux_defconfig"
-KBUILD_DEFCONFIG_imx8mm-trux-q01 = "imx8_trux_defconfig"
+KBUILD_DEFCONFIG:imx8mq-trux-q01 = "imx8mq_trucrux_defconfig"
+KBUILD_DEFCONFIG:imx8mm-trux-q01 = "imx8_trux_defconfig"
 
-DEFAULT_DTB_imx8mq-trux-q01 = "sd-hdmi"
-DEFAULT_DTB_PREFIX_imx8mq-trux-q01 = "imx8mq-trux-8MDVP"
+DEFAULT_DTB:imx8mq-trux-q01 = "sd-hdmi"
+DEFAULT_DTB_PREFIX:imx8mq-trux-q01 = "imx8mq-trux-8MDVP"
 
 SRC_URI = "${KERNEL_SRC};branch=${SRCBRANCH}"
 
 S = "${WORKDIR}/git"
 
-pkg_postinst_kernel-devicetree_append () {
+pkg_postinst:kernel-devicetree:append () {
     rm -f $D/boot/devicetree-*
 }
 
-pkg_postinst_kernel-devicetree_append_imx8mq-trux-q01 () {
+pkg_postinst:kernel-devicetree:append:imx8mq-trux-q01 () {
     cd $D/boot
     ln -s ${DEFAULT_DTB_PREFIX}-${DEFAULT_DTB}.dtb ${DEFAULT_DTB_PREFIX}.dtb
 }
 
 
 # Added by meta-virtualization/recipes-kernel/linux/linux-yocto_5.4_virtualization.inc
-KERNEL_FEATURES_remove = "cfg/virtio.scc"
+KERNEL_FEATURES:remove = "cfg/virtio.scc"
 
-COMPATIBLE_MACHINE = "(mx6|mx7|mx8)"
+COMPATIBLE_MACHINE = "(mx6-nxp-bsp|mx7-nxp-bsp|mx8-nxp-bsp)"

@@ -1,15 +1,15 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_URI_append_imx8mm-trux-q01 = " \
+SRC_URI:append:imx8mm-trux-q01 = " \
 	file://disable-serialgetty.sh \
 	file://disable-serialgetty.service \
 "
-FILES_${PN}_append_imx8mm-trux-q01 = " \
+FILES_${PN}:append:imx8mm-trux-q01 = " \
         ${systemd_unitdir}/system/* \
         ${sysconfdir}/systemd/system/* \
 "
 
-do_install_append_imx8mm-trux-q01() {
+do_install:append:imx8mm-trux-q01() {
 	install -d ${D}${systemd_unitdir}/system
 	install -d ${D}${sysconfdir}/systemd/system/sysinit.target.wants
 	install -m 0644 ${WORKDIR}/disable-serialgetty.service ${D}${systemd_unitdir}/system

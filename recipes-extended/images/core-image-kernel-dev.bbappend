@@ -1,0 +1,1 @@
+KERNEL_DEV_UTILS = "dropbear ${NETWORK_MANAGER}"

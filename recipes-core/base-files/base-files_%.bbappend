@@ -1,11 +1,11 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
 	file://trucrux-blacklist.conf \
 	file://NetworkManager.conf \
 "
 
-do_install_append() {
+do_install:append() {
 	install -d ${D}${sysconfdir}/NetworkManager
 	install -m 0755 -d ${D}${sysconfdir}/modprobe.d
 	install -m 0644 ${WORKDIR}/trucrux-blacklist.conf ${D}${sysconfdir}/modprobe.d

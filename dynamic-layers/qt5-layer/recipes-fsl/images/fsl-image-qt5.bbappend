@@ -11,4 +11,4 @@ IMAGE_INSTALL += " \
 	qtdeclarative-tools \
 "
 
-IMAGE_INSTALL_append = " qttools qttools-dev qttools-tools packagegroup-qt5-toolchain-target qtbase-dev qtbase-mkspecs qtbase-tools "
+IMAGE_INSTALL:append = " qttools qttools-dev qttools-tools packagegroup-qt5-toolchain-target qtbase-dev qtbase-mkspecs qtbase-tools "
