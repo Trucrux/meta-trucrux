@@ -42,6 +42,11 @@ do_install:append() {
 	update_file "Group=weston" "Group=root" ${D}${systemd_system_unitdir}/weston.service
 
 	update_file "WantedBy=" "WantedBy=multi-user.target " ${D}${systemd_system_unitdir}/weston.service
+
+	if ! grep -q "ExecStartPre=/usr/bin/setup-weston-init.sh" ${D}${systemd_system_unitdir}/weston.service; then
+		sed -i '37 i ExecStartPre=/usr/bin/setup-weston-init.sh' ${D}${systemd_system_unitdir}/weston.service
+	fi
+
 }
 
 INI_SHELL_SECT = "\\[shell\\]"
