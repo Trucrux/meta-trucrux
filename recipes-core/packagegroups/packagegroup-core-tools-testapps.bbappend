@@ -10,7 +10,7 @@
 #                                                   '', d), d)} \
 #    "
 #
-
+NETWORK_MANAGER = "networkmanager"
 RDEPENDS:${PN} = "\
     blktool \
     ${KEXECTOOLS} \
