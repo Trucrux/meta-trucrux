@@ -13,6 +13,14 @@ inherit core-image features_check
 ###          to provide a way for users to reproduce the image used during
 ###          the validation process of i.MX BSP releases.
 
+RAPID_PACKAGES += "\
+    python3-pip python3-psutil \
+    curl \
+    wget \
+    binutils gcc vim \
+    sqlite \
+"
+
 IMAGE_FEATURES += " \
     splash \
     package-management \
@@ -46,6 +54,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 	screen \
 	tcf-agent \
 	openssh-sftp-server \
+	${RAPID_PACKAGES} \
 "
 
 # only for Android enabled machines

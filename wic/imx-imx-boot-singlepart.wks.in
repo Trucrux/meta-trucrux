@@ -17,4 +17,3 @@ part u-boot --source rawcopy --sourceparams="file=imx-boot" --ondisk mmcblk --no
 part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --align 8192
 
 bootloader --ptable msdos
-
