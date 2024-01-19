@@ -56,6 +56,10 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 	openssh-sftp-server \
 	${RAPID_PACKAGES} \
 "
+# Video Codec for H.264
+IMAGE_INSTALL:append = " \
+	openh264 \
+"
 
 # only for Android enabled machines
 IMAGE_INSTALL:append:imxgpu3d = " \
