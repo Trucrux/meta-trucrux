@@ -60,6 +60,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 IMAGE_INSTALL:append = " \
 	openh264 \
 "
+LICENSE_FLAGS_ACCEPTED += "commercial"
 
 # only for Android enabled machines
 IMAGE_INSTALL:append:imxgpu3d = " \
