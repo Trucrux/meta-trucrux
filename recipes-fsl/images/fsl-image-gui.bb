@@ -56,6 +56,13 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 	openssh-sftp-server \
 	${RAPID_PACKAGES} \
 "
+
+IMAGE_INSTALL:append = " \
+	chromium-ozone-wayland \
+	thunar \
+	xfce4-terminal \
+"
+
 # Video Codec for H.264
 IMAGE_INSTALL:append = " \
 	openh264 \

@@ -24,11 +24,6 @@ update_file() {
 
 do_install:append() {
 	# Overwrite modified Weston systemd service
-	install -D -p -m0644 ${WORKDIR}/trux-weston@.service ${D}${systemd_system_unitdir}/weston@.service
-	sed -i -e s:/etc:${sysconfdir}:g \
-		-e s:/usr/bin:${bindir}:g \
-		-e s:/var:${localstatedir}:g \
-		${D}${systemd_unitdir}/system/weston@.service
 	install -D -p -m0755 ${WORKDIR}/setup-weston-init.sh ${D}${bindir}
 
 	install -d ${D}${sysconfdir}/xdg/weston
