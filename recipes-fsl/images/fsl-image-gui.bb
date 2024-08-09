@@ -13,6 +13,16 @@ inherit core-image features_check
 ###          to provide a way for users to reproduce the image used during
 ###          the validation process of i.MX BSP releases.
 
+BT_SUPPORT_PACKAGES += " \
+    bluez5 \
+    bluez5-noinst-tools \
+    bluez5-obex \
+    openobex \
+    obexftp \
+    glibc-gconv-utf-16 \
+    glibc-utils \
+"
+
 RAPID_PACKAGES += "\
     python3-pip python3-psutil \
     curl \
@@ -61,6 +71,8 @@ IMAGE_INSTALL:append = " \
 	chromium-ozone-wayland \
 	thunar \
 	xfce4-terminal \
+	minicom \
+	git \
 "
 
 # Video Codec for H.264
